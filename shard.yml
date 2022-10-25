@@ -1,0 +1,13 @@
+name: crystal_name_space
+version: 0.1.0
+
+authors:
+  - YAMADA Masahiro <https://github.com/yamada-masahiro/>
+
+# targets:
+#   crystal_name_space:
+#     main: src/crystal_name_space.cr
+
+crystal: 1.6.1
+
+license: MIT
