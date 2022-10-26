@@ -1,27 +1,40 @@
-# crystal_name_space
+# Crystal Name Space
 
-TODO: Write a description here
+Shows that two independent unit tests interfere when you run `crystal spec`.
 
 ## Installation
 
-TODO: Write installation instructions here
+Copy this repository via `git clone`.
 
 ## Usage
 
-TODO: Write usage instructions here
+First, run two tests one by one below:
 
-## Development
+``` shell
+cd path/to/root/directory
+crystal spec spec/foo/baz_spec.cr
+crystal spec spec/bar/baz_spec.cr
+```
+then you will get no error.
 
-TODO: Write development instructions here
+Next, run two at a time below:
 
-## Contributing
+``` shell
+crystal spec
+```
+then you might get a failure below:
+```
+  1) Bar::Baz #do_something returns a string
+     Failure/Error: baz.do_something.should eq "I am Foo Baz."
 
-1. Fork it (<https://github.com/yamada-masahiro/crystal_name_space/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+       Expected: "I am Foo Baz."
+            got: "I am Bar Baz."
 
-## Contributors
+     # spec/foo/baz_spec.cr:10
+```
+No test for Bar::Baz is in [foo/baz_spec.cr](spec/foo/baz_spec.cr), so the test runner must mix them.
 
-- [YAMADA Masahiro](https://github.com/yamada-masahiro) - creator and maintainer
+
+## Creator
+
+[YAMADA Masahiro](https://github.com/yamada-masahiro)
