@@ -5,7 +5,9 @@ include Foo
 
 describe Baz do
   describe "#do_something" do
-    baz = Baz.new
-    baz.do_something.should eq "I am Foo Baz."
+    it "returns a string" do
+      baz = Baz.new
+      baz.do_something.should eq "I am Foo Baz."
+    end
   end
 end
